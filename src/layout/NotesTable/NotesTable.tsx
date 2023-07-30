@@ -71,7 +71,11 @@ export default function NotesTable() {
                     See {isViewingArchived ? "active" : "archived"}
                 </Button>
             </div>
-            <Table<Note> items={visibleNotes} columns={columns} />
+            <Table<Note>
+                items={visibleNotes}
+                columns={columns}
+                getRowId={(item) => item.id}
+            />
         </div>
     );
 }

@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
 import { ColumnInfo } from "./Table";
+import { Key } from "react";
 
-export default function TableBody<T extends { id: number }>({
+export default function TableBody<T>({
     items,
     columns,
+    getRowId,
 }: {
     items: T[];
     columns: ColumnInfo<T>[];
+    getRowId: (item: T) => Key;
 }) {
     function getRowCells(item: T): ReactNode {
         return columns.map((column) => {
@@ -31,7 +34,7 @@ export default function TableBody<T extends { id: number }>({
     }
 
     const bodyRows = items.map((item) => (
-        <tr key={item.id}>{getRowCells(item)}</tr>
+        <tr key={getRowId(item)}>{getRowCells(item)}</tr>
     ));
 
     return <tbody>{bodyRows}</tbody>;

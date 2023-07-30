@@ -1,7 +1,7 @@
 import { ColumnInfo } from "./Table";
 import styles from "./Table.module.css";
 
-export default function TableHeading<T extends { id: number }>({
+export default function TableHeading<T>({
     columns,
 }: {
     columns: ColumnInfo<T>[];

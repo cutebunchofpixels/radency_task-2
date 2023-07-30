@@ -17,7 +17,7 @@ export function createNotesStatistics(category: Category, notes: Note[]) {
     for (const note of notes) {
         if (note.category === category && note.isArchived) {
             result.amountArchived++;
-        } else {
+        } else if (note.category === category && !note.isArchived) {
             result.amountActive++;
         }
     }
