@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { ColumnInfo } from "./Table";
 import styles from "./Table.module.css";
 
@@ -7,26 +8,14 @@ export default function TableHeading<T>({
     columns: ColumnInfo<T>[];
 }) {
     const headingCells = columns.map((column) => {
-        if (column.headingComponent) {
-            return (
-                <th
-                    key={column.columnName}
-                    className={column.width ? styles[column.width] : ""}
-                >
-                    <column.headingComponent />
-                </th>
-            );
-        }
+        let headingCellContent: ReactNode;
 
-        if (column.renderHeading) {
-            return (
-                <th
-                    key={column.columnName}
-                    className={column.width ? styles[column.width] : ""}
-                >
-                    {column.renderHeading()}
-                </th>
-            );
+        if (column.headingComponent) {
+            headingCellContent = <column.headingComponent />;
+        } else if (column.renderHeading) {
+            headingCellContent = column.renderHeading();
+        } else {
+            headingCellContent = column.columnName;
         }
 
         return (
@@ -34,7 +23,7 @@ export default function TableHeading<T>({
                 className={column.width ? styles[column.width] : ""}
                 key={column.columnName}
             >
-                {column.columnName}
+                {headingCellContent}
             </th>
         );
     });

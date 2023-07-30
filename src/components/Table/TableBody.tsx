@@ -13,23 +13,19 @@ export default function TableBody<T>({
 }) {
     function getRowCells(item: T): ReactNode {
         return columns.map((column) => {
+            let bodyCellContent: ReactNode;
+
             if (column.cellComponent) {
-                return (
-                    <td key={column.columnName}>
-                        <column.cellComponent item={item} />
-                    </td>
+                bodyCellContent = <column.cellComponent item={item} />;
+            } else if (column.renderCell) {
+                bodyCellContent = column.renderCell(item);
+            } else {
+                throw new Error(
+                    "Received no mapping function or component to render as table body cell"
                 );
             }
 
-            if (column.renderCell) {
-                return (
-                    <td key={column.columnName}>{column.renderCell(item)}</td>
-                );
-            }
-
-            throw new Error(
-                "Received no mapping function or component to render as table body cell"
-            );
+            return <td key={column.columnName}>{bodyCellContent}</td>;
         });
     }
 
