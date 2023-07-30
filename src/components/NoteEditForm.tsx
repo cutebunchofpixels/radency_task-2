@@ -40,14 +40,24 @@ export default function NoteEditForm(props: NoteEditFormProps) {
     return (
         <Formik
             initialValues={initialValues}
-            onSubmit={(values) => handleSubmit(values)}
+            onSubmit={(values, actions) => {
+                handleSubmit(values);
+                actions.resetForm();
+            }}
             validationSchema={formValidationSchema}
         >
             {({ errors, touched }) => (
                 <Form>
                     <div className="w-50 m-auto row g-4 mb-5">
                         <div className="col-6 col-md-12">
-                            <Field name="name" className="form-control" />
+                            <label htmlFor="name" className="form-label">
+                                Name
+                            </label>
+                            <Field
+                                name="name"
+                                className="form-control"
+                                id="name"
+                            />
                             <FormValidationErrorBadge
                                 errors={errors}
                                 touched={touched}
@@ -55,6 +65,9 @@ export default function NoteEditForm(props: NoteEditFormProps) {
                             />
                         </div>
                         <div className="col-6 col-md-12">
+                            <label htmlFor="category" className="form-label">
+                                Category
+                            </label>
                             <Field
                                 as="select"
                                 name="category"
@@ -74,10 +87,14 @@ export default function NoteEditForm(props: NoteEditFormProps) {
                             />
                         </div>
                         <div className="col-12">
+                            <label htmlFor="category" className="form-label">
+                                Content
+                            </label>
                             <Field
                                 as="textarea"
                                 name="content"
                                 className="form-control"
+                                id="content"
                             />
                             <FormValidationErrorBadge
                                 errors={errors}
