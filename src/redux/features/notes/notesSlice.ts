@@ -2,15 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Note from "../../../models/Note";
 import { parseNoteDates } from "../../../models/Note";
 import Category from "../../../models/Category";
+import newId from "../../../utils/newId";
 
 interface NotesState {
     value: Note[];
 }
 
-let initialId = 1;
 const notes: Note[] = [
     {
-        id: initialId++,
+        id: newId(),
         name: "Vitae proin sagittis nisl rhoncus mattis rhoncus",
         creationDate: "2023-07-20",
         category: Category.Task,
@@ -22,7 +22,7 @@ const notes: Note[] = [
         ),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Orci eu lobortis elementum nibh tellus molestie",
         creationDate: "2023-07-18",
         category: Category.Idea,
@@ -34,7 +34,7 @@ const notes: Note[] = [
         ),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Interdum consectetur libero id faucibus",
         creationDate: "2023-07-16",
         category: Category.RandomThought,
@@ -43,7 +43,7 @@ const notes: Note[] = [
         dates: parseNoteDates("Morbi ut risus vitae libero auctor luctus."),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Volutpat consequat mauris",
         creationDate: "2023-06-05",
         category: Category.Task,
@@ -55,7 +55,7 @@ const notes: Note[] = [
         ),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Rhoncus aenean vel elits",
         creationDate: "2023-06-01",
         category: Category.Task,
@@ -67,7 +67,7 @@ const notes: Note[] = [
         ),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Eget nunc",
         creationDate: "2023-06-01",
         category: Category.Task,
@@ -79,7 +79,7 @@ const notes: Note[] = [
         ),
     },
     {
-        id: initialId++,
+        id: newId(),
         name: "Viverra ipsum nunc aliquet bibendum",
         creationDate: "2023-05-19",
         category: Category.RandomThought,
