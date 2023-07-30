@@ -3,9 +3,24 @@ import Table, { ColumnInfo } from "../../components/Table/Table";
 import { useAppSelector } from "../../redux/app/hooks";
 import BodyActionCell from "./BodyActionCell";
 import HeadingActionCell from "./HeadingActionCell";
+import { useState } from "react";
+import Button from "../../components/Button";
 
 export default function NotesTable() {
     const notes = useAppSelector((state) => state.notes.value);
+    const [isViewingArchived, setViewingArchived] = useState<boolean>(false);
+
+    let visibleNotes: Note[];
+
+    if (isViewingArchived) {
+        visibleNotes = notes.filter((note) => note.isArchived);
+    } else {
+        visibleNotes = notes.filter((note) => !note.isArchived);
+    }
+
+    function handleToggleArchivedClick() {
+        setViewingArchived(!isViewingArchived);
+    }
 
     const columns: ColumnInfo<Note>[] = [
         {
@@ -49,8 +64,14 @@ export default function NotesTable() {
     ];
 
     return (
-        <div className="container-md">
-            <Table<Note> items={notes} columns={columns} />
+        <div className="container-md mt-5">
+            <div className="d-flex column-gap-3 mb-3">
+                <h2>{isViewingArchived ? "Archived" : "Active"} notes</h2>
+                <Button variant="primary" onClick={handleToggleArchivedClick}>
+                    See {isViewingArchived ? "active" : "archived"}
+                </Button>
+            </div>
+            <Table<Note> items={visibleNotes} columns={columns} />
         </div>
     );
 }
