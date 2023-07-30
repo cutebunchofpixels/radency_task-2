@@ -103,6 +103,7 @@ const notesSlice = createSlice({
         noteCreated(state, action: PayloadAction<Note>) {
             state.value.unshift(action.payload);
         },
+
         noteEdited(state, action: PayloadAction<Note>) {
             const newNote = action.payload;
 
@@ -115,6 +116,7 @@ const notesSlice = createSlice({
             oldNote.content = newNote.content;
             oldNote.dates = newNote.dates;
         },
+
         noteRemoved(state, action: PayloadAction<Note>) {
             const deleteNote = action.payload;
             const deleteNoteIndex = state.value.findIndex(
@@ -123,8 +125,36 @@ const notesSlice = createSlice({
 
             state.value.splice(deleteNoteIndex, 1);
         },
+
+        noteArchived(state, action: PayloadAction<Note>) {
+            const archiveNote = action.payload;
+
+            state.value = state.value.map((note) => {
+                if (note.id === archiveNote.id) {
+                    note.isArchived = !note.isArchived;
+                }
+
+                return note;
+            });
+        },
+
+        notesArchived(state) {
+            for (const note of state.value) {
+                note.isArchived = true;
+            }
+        },
+        notesRemoved() {
+            return { value: [] };
+        },
     },
 });
 
-export const { noteCreated, noteEdited, noteRemoved } = notesSlice.actions;
+export const {
+    noteCreated,
+    noteEdited,
+    noteRemoved,
+    noteArchived,
+    notesArchived,
+    notesRemoved,
+} = notesSlice.actions;
 export default notesSlice.reducer;
