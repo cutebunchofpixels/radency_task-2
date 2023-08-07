@@ -6,10 +6,13 @@ import HeadingActionCell from "./HeadingActionCell";
 import { useState } from "react";
 import Button from "../../components/Button";
 import Heading from "../../components/Heading";
+import Modal from "../../components/Modal/Modal";
+import EditNoteModalContent from "../EditNoteModalContent";
 
 export default function NotesTable() {
     const notes = useAppSelector((state) => state.notes.value);
     const [isViewingArchived, setViewingArchived] = useState<boolean>(false);
+    const [isCreatingNewNote, setCreatingNewNote] = useState<boolean>(false);
 
     let visibleNotes: Note[];
 
@@ -66,12 +69,24 @@ export default function NotesTable() {
 
     return (
         <div className="container-md mt-5">
-            <div className="d-flex column-gap-3 mb-3">
+            <Modal
+                isOpen={isCreatingNewNote}
+                onModalClose={() => setCreatingNewNote(false)}
+            >
+                <EditNoteModalContent
+                    caption="New note"
+                    closeModal={() => setCreatingNewNote(false)}
+                />
+            </Modal>
+            <div className="flex gap-x-4 items-center">
                 <Heading level="h2" element="h2">
                     {isViewingArchived ? "Archived" : "Active"} notes
                 </Heading>
                 <Button onClick={handleToggleArchivedClick}>
                     See {isViewingArchived ? "active" : "archived"}
+                </Button>
+                <Button onClick={() => setCreatingNewNote(true)}>
+                    Create new note
                 </Button>
             </div>
             <Table<Note>

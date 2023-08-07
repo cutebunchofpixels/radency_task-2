@@ -18,7 +18,7 @@ export default function HeadingActionCell() {
     }
 
     return (
-        <div className="d-flex column-gap-2">
+        <div className="flex gap-x-2">
             <Button
                 appearance="outline"
                 size="sm"

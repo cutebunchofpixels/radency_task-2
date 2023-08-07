@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
-import Category from "../models/Category";
-import Note from "../models/Note";
-import Button from "./Button";
+import Category from "../../models/Category";
+import Note from "../../models/Note";
+import Button from "../Button";
 import * as yup from "yup";
 import { FormValidationErrorBadge } from "./FormValidationErrorBadge";
 
@@ -48,38 +48,32 @@ export default function NoteEditForm(props: NoteEditFormProps) {
         >
             {({ errors, touched }) => (
                 <Form>
-                    <div className="w-3/5 m-auto grid gap-4">
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div className="flex flex-col space-y-3 items-start">
-                                <label htmlFor="name">Name</label>
-                                <Field name="name" id="name" />
-                                <FormValidationErrorBadge
-                                    errors={errors}
-                                    touched={touched}
-                                    prop={"name"}
-                                />
-                            </div>
-                            <div className="flex flex-col space-y-3 items-start">
-                                <label htmlFor="category">Category</label>
-                                <Field
-                                    as="select"
-                                    name="category"
-                                    id="category"
-                                >
-                                    {Object.values(Category).map((category) => (
-                                        <option key={category} value={category}>
-                                            {category}
-                                        </option>
-                                    ))}
-                                </Field>
-                                <FormValidationErrorBadge
-                                    errors={errors}
-                                    touched={touched}
-                                    prop={"category"}
-                                />
-                            </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-6">
+                        <div className="flex flex-col space-y-3 items-start md:col-span-3">
+                            <label htmlFor="name">Name</label>
+                            <Field name="name" id="name" />
+                            <FormValidationErrorBadge
+                                errors={errors}
+                                touched={touched}
+                                prop={"name"}
+                            />
                         </div>
-                        <div className="flex flex-col space-y-3 items-start">
+                        <div className="flex flex-col space-y-3 items-start md:col-span-3">
+                            <label htmlFor="category">Category</label>
+                            <Field as="select" name="category" id="category">
+                                {Object.values(Category).map((category) => (
+                                    <option key={category} value={category}>
+                                        {category}
+                                    </option>
+                                ))}
+                            </Field>
+                            <FormValidationErrorBadge
+                                errors={errors}
+                                touched={touched}
+                                prop={"category"}
+                            />
+                        </div>
+                        <div className="flex flex-col space-y-3 items-start md:col-span-6">
                             <label htmlFor="category">Content</label>
                             <Field as="textarea" name="content" id="content" />
                             <FormValidationErrorBadge

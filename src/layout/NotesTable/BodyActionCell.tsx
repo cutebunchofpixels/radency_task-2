@@ -1,16 +1,14 @@
-import Note, { parseNoteDates } from "../../models/Note";
-import { useAppDispatch } from "../../redux/app/hooks";
-import {
-    noteRemoved,
-    noteArchived,
-    noteEdited,
-} from "../../redux/features/notes/notesSlice";
+import { useState } from "react";
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
 import Modal from "../../components/Modal/Modal";
-import NoteEditForm from "../../components/NoteEditForm";
-import { useState } from "react";
-import Heading from "../../components/Heading";
+import Note from "../../models/Note";
+import { useAppDispatch } from "../../redux/app/hooks";
+import {
+    noteArchived,
+    noteRemoved,
+} from "../../redux/features/notes/notesSlice";
+import EditNoteModalContent from "../EditNoteModalContent";
 
 export default function BodyActionCell({ item }: { item: Note }) {
     const [isEdtitng, setEditing] = useState<boolean>(false);
@@ -29,27 +27,13 @@ export default function BodyActionCell({ item }: { item: Note }) {
     }
 
     return (
-        <div className="d-flex column-gap-2">
+        <div className="flex gap-x-2">
             <Modal isOpen={isEdtitng} onModalClose={() => setEditing(false)}>
-                <>
-                    <div className="text-center">
-                        <Heading element="h3" level="h3">
-                            Edit note
-                        </Heading>
-                    </div>
-                    <NoteEditForm
-                        oldNote={item}
-                        handleSubmit={(values) => {
-                            const newNote: Note = {
-                                ...item,
-                                ...values,
-                                dates: parseNoteDates(values.content),
-                            };
-                            dispatch(noteEdited(newNote));
-                            setEditing(false);
-                        }}
-                    />
-                </>
+                <EditNoteModalContent
+                    oldNote={item}
+                    caption="Edit note"
+                    closeModal={() => setEditing(false)}
+                />
             </Modal>
             <Button appearance="outline" size="sm" onClick={handleEditClick}>
                 <Icon name="pencil" />
