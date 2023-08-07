@@ -1,17 +1,11 @@
+import { twJoin } from "tailwind-merge";
+
 export interface IconProps extends React.ComponentPropsWithoutRef<"i"> {
     name: string;
-    additionalClasses?: string;
 }
 
 export default function Icon(props: IconProps) {
-    const { name, additionalClasses, ...rest } = props;
-    const classList = ["bi", `bi-${name}`];
+    const { name, className, ...rest } = props;
 
-    if (additionalClasses) {
-        for (const className of additionalClasses.split(" ")) {
-            classList.push(className);
-        }
-    }
-
-    return <i className={classList.join(" ")} {...rest} />;
+    return <i className={twJoin(`bi-${name}`, className)} {...rest} />;
 }
