@@ -5,6 +5,7 @@ import { useAppSelector } from "../../redux/app/hooks";
 import Category from "../../models/Category";
 import Table from "../../components/Table/Table";
 import { ColumnInfo } from "../../components/Table/Table";
+import Heading from "../../components/Heading";
 
 export default function NotesStatsTable() {
     const notes = useAppSelector((state) => state.notes.value);
@@ -36,6 +37,9 @@ export default function NotesStatsTable() {
 
     return (
         <div className="container-md mt-5">
+            <Heading level="h2" element="h2">
+                Notes summary
+            </Heading>
             <Table<NotesStatistics>
                 items={notesStatistics}
                 columns={columns}

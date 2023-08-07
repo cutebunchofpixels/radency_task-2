@@ -10,6 +10,7 @@ import Icon from "../../components/Icon";
 import Modal from "../../components/Modal/Modal";
 import NoteEditForm from "../../components/NoteEditForm";
 import { useState } from "react";
+import Heading from "../../components/Heading";
 
 export default function BodyActionCell({ item }: { item: Note }) {
     const [isEdtitng, setEditing] = useState<boolean>(false);
@@ -32,7 +33,9 @@ export default function BodyActionCell({ item }: { item: Note }) {
             <Modal isOpen={isEdtitng} onModalClose={() => setEditing(false)}>
                 <>
                     <div className="text-center">
-                        <h3>Edit note</h3>
+                        <Heading element="h3" level="h3">
+                            Edit note
+                        </Heading>
                     </div>
                     <NoteEditForm
                         oldNote={item}

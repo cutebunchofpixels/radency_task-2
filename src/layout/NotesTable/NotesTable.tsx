@@ -5,6 +5,7 @@ import BodyActionCell from "./BodyActionCell";
 import HeadingActionCell from "./HeadingActionCell";
 import { useState } from "react";
 import Button from "../../components/Button";
+import Heading from "../../components/Heading";
 
 export default function NotesTable() {
     const notes = useAppSelector((state) => state.notes.value);
@@ -66,7 +67,9 @@ export default function NotesTable() {
     return (
         <div className="container-md mt-5">
             <div className="d-flex column-gap-3 mb-3">
-                <h2>{isViewingArchived ? "Archived" : "Active"} notes</h2>
+                <Heading level="h2" element="h2">
+                    {isViewingArchived ? "Archived" : "Active"} notes
+                </Heading>
                 <Button onClick={handleToggleArchivedClick}>
                     See {isViewingArchived ? "active" : "archived"}
                 </Button>
