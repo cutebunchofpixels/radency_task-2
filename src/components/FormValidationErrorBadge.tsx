@@ -1,4 +1,5 @@
 import { FormikErrors, FormikTouched } from "formik";
+import Badge from "./Badge";
 
 export function FormValidationErrorBadge<T>({
     errors,
@@ -13,5 +14,5 @@ export function FormValidationErrorBadge<T>({
         return null;
     }
 
-    return <div className="badge text-bg-danger">{String(errors[prop])}</div>;
+    return <Badge state="error">{String(errors[prop])}</Badge>;
 }

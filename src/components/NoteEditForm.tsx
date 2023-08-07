@@ -48,61 +48,47 @@ export default function NoteEditForm(props: NoteEditFormProps) {
         >
             {({ errors, touched }) => (
                 <Form>
-                    <div className="w-50 m-auto row g-4 mb-5">
-                        <div className="col-6 col-md-12">
-                            <label htmlFor="name" className="form-label">
-                                Name
-                            </label>
-                            <Field
-                                name="name"
-                                className="form-control"
-                                id="name"
-                            />
-                            <FormValidationErrorBadge
-                                errors={errors}
-                                touched={touched}
-                                prop={"name"}
-                            />
+                    <div className="w-3/5 m-auto grid gap-4">
+                        <div className="grid md:grid-cols-2 gap-4">
+                            <div className="flex flex-col space-y-3 items-start">
+                                <label htmlFor="name">Name</label>
+                                <Field name="name" id="name" />
+                                <FormValidationErrorBadge
+                                    errors={errors}
+                                    touched={touched}
+                                    prop={"name"}
+                                />
+                            </div>
+                            <div className="flex flex-col space-y-3 items-start">
+                                <label htmlFor="category">Category</label>
+                                <Field
+                                    as="select"
+                                    name="category"
+                                    id="category"
+                                >
+                                    {Object.values(Category).map((category) => (
+                                        <option key={category} value={category}>
+                                            {category}
+                                        </option>
+                                    ))}
+                                </Field>
+                                <FormValidationErrorBadge
+                                    errors={errors}
+                                    touched={touched}
+                                    prop={"category"}
+                                />
+                            </div>
                         </div>
-                        <div className="col-6 col-md-12">
-                            <label htmlFor="category" className="form-label">
-                                Category
-                            </label>
-                            <Field
-                                as="select"
-                                name="category"
-                                id="category"
-                                className="form-select"
-                            >
-                                {Object.values(Category).map((category) => (
-                                    <option key={category} value={category}>
-                                        {category}
-                                    </option>
-                                ))}
-                            </Field>
-                            <FormValidationErrorBadge
-                                errors={errors}
-                                touched={touched}
-                                prop={"category"}
-                            />
-                        </div>
-                        <div className="col-12">
-                            <label htmlFor="category" className="form-label">
-                                Content
-                            </label>
-                            <Field
-                                as="textarea"
-                                name="content"
-                                className="form-control"
-                                id="content"
-                            />
+                        <div className="flex flex-col space-y-3 items-start">
+                            <label htmlFor="category">Content</label>
+                            <Field as="textarea" name="content" id="content" />
                             <FormValidationErrorBadge
                                 errors={errors}
                                 touched={touched}
                                 prop={"content"}
                             />
                         </div>
-                        <div className="col-12">
+                        <div>
                             <Button type="submit">Submit</Button>
                         </div>
                     </div>
