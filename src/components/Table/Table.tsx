@@ -24,9 +24,15 @@ export default function Table<T>({
     getRowId: (item: T) => Key;
 }) {
     return (
-        <table className="table table-hover table-bordered">
-            <TableHeading<T> columns={columns} />
-            <TableBody<T> items={items} columns={columns} getRowId={getRowId} />
-        </table>
+        <div className="overflow-auto shadow rounded-lg">
+            <table className="w-full">
+                <TableHeading<T> columns={columns} />
+                <TableBody<T>
+                    items={items}
+                    columns={columns}
+                    getRowId={getRowId}
+                />
+            </table>
+        </div>
     );
 }

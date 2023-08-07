@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { ColumnInfo } from "./Table";
-import styles from "./Table.module.css";
 
 export default function TableHeading<T>({
     columns,
@@ -20,7 +19,7 @@ export default function TableHeading<T>({
 
         return (
             <th
-                className={column.width ? styles[column.width] : ""}
+                className={`text-left p-3 ${column.width ? column.width : ""}`}
                 key={column.columnName}
             >
                 {headingCellContent}
@@ -29,8 +28,8 @@ export default function TableHeading<T>({
     });
 
     return (
-        <thead>
-            <tr>{headingCells}</tr>
+        <thead className="bg-slate-200 border-b-2 border-slate-300">
+            <tr className="font-semibold">{headingCells}</tr>
         </thead>
     );
 }

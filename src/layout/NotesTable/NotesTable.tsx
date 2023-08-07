@@ -29,7 +29,7 @@ export default function NotesTable() {
             renderCell(note) {
                 return note.name;
             },
-            width: "w15",
+            width: "w-1/6",
         },
         {
             columnName: "Created",
@@ -48,14 +48,14 @@ export default function NotesTable() {
             renderCell(note) {
                 return note.content;
             },
-            width: "w35",
+            width: "w-1/3",
         },
         {
             columnName: "Dates",
             renderCell(note) {
                 return note.dates.join(", ");
             },
-            width: "w15",
+            width: "w-1/6",
         },
         {
             columnName: "actions",

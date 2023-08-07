@@ -25,12 +25,18 @@ export default function TableBody<T>({
                 );
             }
 
-            return <td key={column.columnName}>{bodyCellContent}</td>;
+            return (
+                <td className="p-3 text-left" key={column.columnName}>
+                    {bodyCellContent}
+                </td>
+            );
         });
     }
 
     const bodyRows = items.map((item) => (
-        <tr key={getRowId(item)}>{getRowCells(item)}</tr>
+        <tr className="even:bg-slate-100" key={getRowId(item)}>
+            {getRowCells(item)}
+        </tr>
     ));
 
     return <tbody>{bodyRows}</tbody>;
