@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import styles from "./Modal.module.css";
 
 export default function Modal({
     isOpen,
@@ -15,9 +14,12 @@ export default function Modal({
     }
 
     return (
-        <div className={styles.modalWrapper} onClick={onModalClose}>
+        <div
+            className="fixed inset-0 flex items-center justify-center bg-black/10 transition p-10"
+            onClick={onModalClose}
+        >
             <div
-                className={styles.modalContent}
+                className="bg-white p-12 rounded"
                 onClick={(e) => e.stopPropagation()}
             >
                 {children}
