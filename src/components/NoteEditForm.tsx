@@ -103,9 +103,7 @@ export default function NoteEditForm(props: NoteEditFormProps) {
                             />
                         </div>
                         <div className="col-12">
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                            <Button type="submit">Submit</Button>
                         </div>
                     </div>
                 </Form>

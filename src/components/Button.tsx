@@ -1,21 +1,39 @@
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
-    variant: string;
-    additionalClasses?: string;
-}
+import { VariantProps, cva } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+
+export const buttonVariants = cva(
+    "focus:outline-none focus:ring inline-block rounded-md transition",
+    {
+        variants: {
+            appearance: {
+                default:
+                    "bg-purple-700 hover:bg-purple-800 text-white focus:ring-purple-300",
+                outline:
+                    "border border-purple-700 hover:bg-purple-800 hover:text-white focus:ring-purple-300",
+            },
+            size: {
+                default: "px-5 py-2",
+                sm: "px-3 py-2",
+            },
+        },
+        defaultVariants: {
+            appearance: "default",
+            size: "default",
+        },
+    }
+);
+
+export interface ButtonProps
+    extends React.ComponentPropsWithoutRef<"button">,
+        VariantProps<typeof buttonVariants> {}
 
 export default function Button(props: ButtonProps) {
-    const { variant, additionalClasses, children, ...rest } = props;
+    const { className, size, appearance, ...rest } = props;
 
-    const classList = ["btn", `btn-${variant}`];
-
-    if (additionalClasses) {
-        for (const className of additionalClasses.split(" ")) {
-            classList.push(className);
-        }
-    }
     return (
-        <button className={classList.join(" ")} {...rest}>
-            {children}
-        </button>
+        <button
+            className={twMerge(buttonVariants({ appearance, size }), className)}
+            {...rest}
+        />
     );
 }

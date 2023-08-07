@@ -48,17 +48,19 @@ export default function BodyActionCell({ item }: { item: Note }) {
                     />
                 </>
             </Modal>
-            <Button variant="outline-primary" onClick={handleEditClick}>
+            <Button appearance="outline" size="sm" onClick={handleEditClick}>
                 <Icon name="pencil" />
             </Button>
             <Button
-                variant="outline-primary"
+                appearance="outline"
+                size="sm"
                 onClick={() => handleArchiveClick(item)}
             >
                 <Icon name="archive" />
             </Button>
             <Button
-                variant="outline-primary"
+                appearance="outline"
+                size="sm"
                 onClick={() => handleRemoveClick(item)}
             >
                 <Icon name="x" />

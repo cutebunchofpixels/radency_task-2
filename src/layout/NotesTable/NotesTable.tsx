@@ -67,7 +67,7 @@ export default function NotesTable() {
         <div className="container-md mt-5">
             <div className="d-flex column-gap-3 mb-3">
                 <h2>{isViewingArchived ? "Archived" : "Active"} notes</h2>
-                <Button variant="primary" onClick={handleToggleArchivedClick}>
+                <Button onClick={handleToggleArchivedClick}>
                     See {isViewingArchived ? "active" : "archived"}
                 </Button>
             </div>

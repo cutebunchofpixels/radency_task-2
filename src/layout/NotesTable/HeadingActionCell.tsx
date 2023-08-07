@@ -19,11 +19,19 @@ export default function HeadingActionCell() {
 
     return (
         <div className="d-flex column-gap-2">
-            <Button variant="outline-primary" onClick={handleArchiveAllClick}>
+            <Button
+                appearance="outline"
+                size="sm"
+                onClick={handleArchiveAllClick}
+            >
                 <Icon name="archive" />
             </Button>
 
-            <Button variant="outline-primary" onClick={handleRemoveAllClick}>
+            <Button
+                appearance="outline"
+                size="sm"
+                onClick={handleRemoveAllClick}
+            >
                 <Icon name="x" />
             </Button>
         </div>
