@@ -36,7 +36,7 @@ export default function NotesStatsTable() {
     ];
 
     return (
-        <div className="container-md mt-5">
+        <div className="container mx-auto px-5 lg:px-10 mt-10 mb-10">
             <Heading level="h2" element="h2">
                 Notes summary
             </Heading>

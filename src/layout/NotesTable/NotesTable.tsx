@@ -68,7 +68,7 @@ export default function NotesTable() {
     ];
 
     return (
-        <div className="container-md mt-5">
+        <div className="container mx-auto px-5 lg:px-10 mt-10">
             <Modal
                 isOpen={isCreatingNewNote}
                 onModalClose={() => setCreatingNewNote(false)}
@@ -78,7 +78,7 @@ export default function NotesTable() {
                     closeModal={() => setCreatingNewNote(false)}
                 />
             </Modal>
-            <div className="flex gap-x-4 items-center">
+            <div className="flex gap-x-4 items-start">
                 <Heading level="h2" element="h2">
                     {isViewingArchived ? "Archived" : "Active"} notes
                 </Heading>
@@ -86,7 +86,7 @@ export default function NotesTable() {
                     See {isViewingArchived ? "active" : "archived"}
                 </Button>
                 <Button onClick={() => setCreatingNewNote(true)}>
-                    Create new note
+                    Create note
                 </Button>
             </div>
             <Table<Note>

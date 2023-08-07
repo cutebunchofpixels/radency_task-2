@@ -5,12 +5,12 @@ import { twMerge } from "tailwind-merge";
 export const headingVariants = cva("text-gray-900", {
     variants: {
         level: {
-            h1: "font-extrabold text-4xl mb-4 md:text-5xl lg:text-6xl tracking-tight",
-            h2: "font-bold text-3xl mb-3 lg:text-4xl tracking-tight",
-            h3: "font-bold text-2xl mb-2 lg:text-3xl tracking-tight",
-            h4: "font-bold text-xl lg:text-2xl",
-            h5: "font-semibold text-lg lg:text-xl",
-            h6: "font-semibold",
+            h1: "font-extrabold text-4xl mb-8 md:text-5xl lg:text-6xl lg:mb-12 tracking-tight",
+            h2: "font-bold text-3xl mb-6 lg:text-4xl lg:mb-8 tracking-tight",
+            h3: "font-bold text-2xl mb-4 lg:text-3xl lg:mb-6 tracking-tight",
+            h4: "font-bold text-xl mb-3 lg:text-2xl",
+            h5: "font-semibold mb-2 text-lg lg:text-xl",
+            h6: "font-semibold mb-2",
         },
     },
 });

@@ -27,7 +27,7 @@ export default function BodyActionCell({ item }: { item: Note }) {
     }
 
     return (
-        <div className="flex gap-x-2">
+        <div className="flex flex-col sm:flex-row gap-2">
             <Modal isOpen={isEdtitng} onModalClose={() => setEditing(false)}>
                 <EditNoteModalContent
                     oldNote={item}
