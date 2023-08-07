@@ -7,9 +7,9 @@ export const buttonVariants = cva(
         variants: {
             appearance: {
                 default:
-                    "bg-purple-700 hover:bg-purple-800 text-white focus:ring-purple-300",
+                    "bg-teal-600 hover:bg-teal-700 text-white focus:ring-teal-500",
                 outline:
-                    "border border-purple-700 hover:bg-purple-800 hover:text-white focus:ring-purple-300",
+                    "border border-teal-600 border-opacity-40 hover:bg-teal-700 hover:text-white focus:ring-teal-500",
             },
             size: {
                 default: "px-5 py-2",
