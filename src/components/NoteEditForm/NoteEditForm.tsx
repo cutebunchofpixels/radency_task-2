@@ -5,7 +5,7 @@ import Button from "../Button";
 import * as yup from "yup";
 import { FormValidationErrorBadge } from "./FormValidationErrorBadge";
 
-interface FormValues {
+export interface FormValues {
     name: string;
     content: string;
     category: Category;

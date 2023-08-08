@@ -1,16 +1,20 @@
-import Note from "../../models/Note";
-import Table, { ColumnInfo } from "../../components/Table/Table";
-import { useAppSelector } from "../../redux/app/hooks";
-import BodyActionCell from "./BodyActionCell";
-import HeadingActionCell from "./HeadingActionCell";
 import { useState } from "react";
 import Button from "../../components/Button";
 import Heading from "../../components/Heading";
 import Modal from "../../components/Modal/Modal";
+import { FormValues } from "../../components/NoteEditForm/NoteEditForm";
+import Table, { ColumnInfo } from "../../components/Table/Table";
+import Note, { parseNoteDates } from "../../models/Note";
+import { useAppDispatch, useAppSelector } from "../../redux/app/hooks";
+import { noteCreated } from "../../redux/features/notes/notesSlice";
+import newId from "../../utils/newId";
 import EditNoteModalContent from "../EditNoteModalContent";
+import BodyActionCell from "./BodyActionCell";
+import HeadingActionCell from "./HeadingActionCell";
 
 export default function NotesTable() {
     const notes = useAppSelector((state) => state.notes.value);
+    const dispatch = useAppDispatch();
     const [isViewingArchived, setViewingArchived] = useState<boolean>(false);
     const [isCreatingNewNote, setCreatingNewNote] = useState<boolean>(false);
 
@@ -24,6 +28,19 @@ export default function NotesTable() {
 
     function handleToggleArchivedClick() {
         setViewingArchived(!isViewingArchived);
+    }
+
+    function handleSubmitForm(values: FormValues) {
+        const newNote: Note = {
+            creationDate: new Date().toString(),
+            dates: parseNoteDates(values.content),
+            isArchived: false,
+            id: newId(),
+            ...values,
+        };
+
+        dispatch(noteCreated(newNote));
+        setCreatingNewNote(false);
     }
 
     const columns: ColumnInfo<Note>[] = [
@@ -75,7 +92,7 @@ export default function NotesTable() {
             >
                 <EditNoteModalContent
                     caption="New note"
-                    closeModal={() => setCreatingNewNote(false)}
+                    handleSubmit={handleSubmitForm}
                 />
             </Modal>
             <div className="flex gap-x-4 items-start">
