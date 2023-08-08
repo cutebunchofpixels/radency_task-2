@@ -1,6 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
+import NonNullableMapped from "../utils/NonNullableMapped";
 
 export const headingVariants = cva("text-gray-900", {
     variants: {
@@ -17,7 +18,7 @@ export const headingVariants = cva("text-gray-900", {
 
 export interface HeadingProps
     extends HTMLAttributes<HTMLHeadingElement>,
-        VariantProps<typeof headingVariants> {
+        NonNullableMapped<VariantProps<typeof headingVariants>> {
     element: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 

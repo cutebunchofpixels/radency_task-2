@@ -1,5 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+import NonNullableMapped from "../utils/NonNullableMapped";
 
 export const badgeVariants = cva("font-medium rounded", {
     variants: {
@@ -8,18 +9,15 @@ export const badgeVariants = cva("font-medium rounded", {
             success: "bg-green-100 text-green-800",
         },
         size: {
-            default: "text-xs px-2.5 py-0.5",
+            base: "text-xs px-2.5 py-0.5",
             lg: "text-sm px-4 py-2",
         },
-    },
-    defaultVariants: {
-        size: "default",
     },
 });
 
 interface BadgeProps
     extends React.ComponentPropsWithoutRef<"span">,
-        VariantProps<typeof badgeVariants> {}
+        NonNullableMapped<VariantProps<typeof badgeVariants>> {}
 
 export default function Badge(props: BadgeProps) {
     const { className, state, size, ...rest } = props;

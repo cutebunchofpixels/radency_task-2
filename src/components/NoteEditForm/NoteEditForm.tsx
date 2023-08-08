@@ -83,7 +83,13 @@ export default function NoteEditForm(props: NoteEditFormProps) {
                             />
                         </div>
                         <div>
-                            <Button type="submit">Submit</Button>
+                            <Button
+                                appearance="primary"
+                                size="base"
+                                type="submit"
+                            >
+                                Submit
+                            </Button>
                         </div>
                     </div>
                 </Form>
