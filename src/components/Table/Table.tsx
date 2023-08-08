@@ -14,15 +14,23 @@ export interface ColumnInfo<T> {
     headingComponent?: React.FC;
 }
 
-export default function Table<T>({
-    items,
-    columns,
-    getRowId,
-}: {
+interface TableProps<T> {
+    /**
+     * Items to render
+     */
     items: T[];
+    /**
+     * An array of objects describing the layout of each column.
+     * Mapping function or custom components can be passed as needed.
+     */
     columns: ColumnInfo<T>[];
+    /**
+     * Callback to get a unique identifier for each row of the table
+     */
     getRowId: (item: T) => Key;
-}) {
+}
+
+export default function Table<T>({ items, columns, getRowId }: TableProps<T>) {
     return (
         <div className="overflow-auto shadow rounded-lg">
             <table className="w-full">
