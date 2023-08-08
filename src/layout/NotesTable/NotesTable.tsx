@@ -99,18 +99,10 @@ export default function NotesTable() {
                 <Heading level="h2" element="h2">
                     {isViewingArchived ? "Archived" : "Active"} notes
                 </Heading>
-                <Button
-                    appearance="primary"
-                    size="base"
-                    onClick={handleToggleArchivedClick}
-                >
+                <Button onClick={handleToggleArchivedClick}>
                     See {isViewingArchived ? "active" : "archived"}
                 </Button>
-                <Button
-                    appearance="primary"
-                    size="base"
-                    onClick={() => setCreatingNewNote(true)}
-                >
+                <Button onClick={() => setCreatingNewNote(true)}>
                     Create note
                 </Button>
             </div>

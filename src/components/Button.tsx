@@ -17,6 +17,11 @@ export const buttonVariants = cva(
                 sm: "px-3 py-2",
             },
         },
+
+        defaultVariants: {
+            appearance: "primary",
+            size: "base",
+        },
     }
 );
 

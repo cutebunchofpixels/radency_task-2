@@ -13,6 +13,10 @@ export const badgeVariants = cva("font-medium rounded", {
             lg: "text-sm px-4 py-2",
         },
     },
+    defaultVariants: {
+        state: "success",
+        size: "base",
+    },
 });
 
 interface BadgeProps

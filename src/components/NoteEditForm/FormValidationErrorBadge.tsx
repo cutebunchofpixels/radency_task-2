@@ -14,9 +14,5 @@ export function FormValidationErrorBadge<T>({
         return null;
     }
 
-    return (
-        <Badge size="base" state="error">
-            {String(errors[prop])}
-        </Badge>
-    );
+    return <Badge state="error">{String(errors[prop])}</Badge>;
 }

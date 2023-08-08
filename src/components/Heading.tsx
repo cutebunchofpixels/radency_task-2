@@ -18,7 +18,7 @@ export const headingVariants = cva("text-gray-900", {
 
 export interface HeadingProps
     extends HTMLAttributes<HTMLHeadingElement>,
-        NonNullableMapped<VariantProps<typeof headingVariants>> {
+        Required<NonNullableMapped<VariantProps<typeof headingVariants>>> {
     element: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
