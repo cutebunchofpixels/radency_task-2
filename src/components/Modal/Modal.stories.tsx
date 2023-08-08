@@ -6,9 +6,18 @@ import Button from "../Button/Button";
 const meta = {
     title: "Components/Modal",
     component: Modal,
+    tags: ["autodocs"],
     args: {
         children: "Modal text",
         isOpen: true,
+    },
+    argTypes: {
+        isOpen: {
+            control: false,
+        },
+        onModalClose: {
+            control: false,
+        },
     },
 } satisfies Meta<typeof Modal>;
 
@@ -25,7 +34,7 @@ function ModalWithHooks({
     const [isModalOpen, setModalOpen] = useState<boolean>(isOpen);
 
     return (
-        <>
+        <div style={{ minHeight: "30vh" }}>
             <Modal
                 isOpen={isModalOpen}
                 onModalClose={() => setModalOpen(false)}
@@ -39,21 +48,15 @@ function ModalWithHooks({
             >
                 Open modal
             </Button>
-        </>
+        </div>
     );
 }
 
 export const Open: Story = {
-    parameters: {
-        controls: { exclude: ["isOpen", "onModalClose"] },
-    },
     render: (args) => <ModalWithHooks {...args} />,
 };
 
 export const Closed: Story = {
-    parameters: {
-        controls: { exclude: ["isOpen", "onModalClose"] },
-    },
     args: {
         isOpen: false,
     },
