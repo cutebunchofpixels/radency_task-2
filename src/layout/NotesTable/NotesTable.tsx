@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import Heading from "../../components/Heading";
 import Modal from "../../components/Modal/Modal";
 import { FormValues } from "../../components/NoteEditForm/NoteEditForm";

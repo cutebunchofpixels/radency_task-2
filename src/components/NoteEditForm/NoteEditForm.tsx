@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import Category from "../../models/Category";
 import Note from "../../models/Note";
-import Button from "../Button";
+import Button from "../Button/Button";
 import * as yup from "yup";
 import { FormValidationErrorBadge } from "./FormValidationErrorBadge";
 

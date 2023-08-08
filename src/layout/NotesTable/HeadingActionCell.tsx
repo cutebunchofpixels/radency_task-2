@@ -3,7 +3,7 @@ import {
     notesArchived,
     notesRemoved,
 } from "../../redux/features/notes/notesSlice";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import Icon from "../../components/Icon";
 
 export default function HeadingActionCell() {

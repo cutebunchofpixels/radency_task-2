@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import Icon from "../../components/Icon";
 import Modal from "../../components/Modal/Modal";
 import Note, { parseNoteDates } from "../../models/Note";
