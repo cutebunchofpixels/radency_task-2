@@ -13,7 +13,22 @@ const meta = {
         size: "base",
         children: "Badge text",
     },
-    argTypes: {},
+    argTypes: {
+        state: {
+            table: {
+                defaultValue: {
+                    summary: "success",
+                },
+            },
+        },
+        size: {
+            table: {
+                defaultValue: {
+                    summary: "base",
+                },
+            },
+        },
+    },
 } satisfies Meta<typeof Badge>;
 
 export default meta;

@@ -13,7 +13,22 @@ const meta = {
         size: "base",
         children: "Button text",
     },
-    argTypes: {},
+    argTypes: {
+        appearance: {
+            table: {
+                defaultValue: {
+                    summary: "primary",
+                },
+            },
+        },
+        size: {
+            table: {
+                defaultValue: {
+                    summary: "base",
+                },
+            },
+        },
+    },
 } satisfies Meta<typeof Button>;
 
 export default meta;
