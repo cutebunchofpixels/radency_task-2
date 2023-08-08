@@ -5,7 +5,7 @@ import { useAppSelector } from "../../redux/app/hooks";
 import Category from "../../models/Category";
 import Table from "../../components/Table/Table";
 import { ColumnInfo } from "../../components/Table/Table";
-import Heading from "../../components/Heading";
+import Heading from "../../components/Heading/Heading";
 
 export default function NotesStatsTable() {
     const notes = useAppSelector((state) => state.notes.value);

@@ -1,4 +1,4 @@
-import Heading from "../components/Heading";
+import Heading from "../components/Heading/Heading";
 import NoteEditForm, {
     FormValues,
 } from "../components/NoteEditForm/NoteEditForm";

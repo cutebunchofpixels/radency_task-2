@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../components/Button/Button";
-import Heading from "../../components/Heading";
+import Heading from "../../components/Heading/Heading";
 import Modal from "../../components/Modal/Modal";
 import { FormValues } from "../../components/NoteEditForm/NoteEditForm";
 import Table, { ColumnInfo } from "../../components/Table/Table";

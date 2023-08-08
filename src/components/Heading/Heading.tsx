@@ -1,10 +1,11 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import NonNullableMapped from "../utils/NonNullableMapped";
+import NonNullableMapped from "../../utils/NonNullableMapped";
 
 export const headingVariants = cva("text-gray-900", {
     variants: {
+        /**Affects size of the heading */
         level: {
             h1: "font-extrabold text-4xl mb-8 md:text-5xl lg:text-6xl lg:mb-12 tracking-tight",
             h2: "font-bold text-3xl mb-6 lg:text-4xl lg:mb-8 tracking-tight",
