@@ -8,7 +8,7 @@ interface NotesState {
     value: Note[];
 }
 
-const notes: Note[] = [
+export const notes: Note[] = [
     {
         id: newId(),
         name: "Vitae proin sagittis nisl rhoncus mattis rhoncus",

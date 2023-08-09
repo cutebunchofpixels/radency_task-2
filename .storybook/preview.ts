@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import "../src/index.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const preview: Preview = {
     parameters: {
@@ -14,4 +15,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
