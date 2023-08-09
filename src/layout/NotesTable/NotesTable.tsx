@@ -8,7 +8,7 @@ import Note, { parseNoteDates } from "../../models/Note";
 import { useAppDispatch, useAppSelector } from "../../redux/app/hooks";
 import { noteCreated } from "../../redux/features/notes/notesSlice";
 import newId from "../../utils/newId";
-import EditNoteModalContent from "../EditNoteModalContent";
+import EditNoteModalContent from "../EditNoteModalContent/EditNoteModalContent";
 import BodyActionCell from "./BodyActionCell";
 import HeadingActionCell from "./HeadingActionCell";
 

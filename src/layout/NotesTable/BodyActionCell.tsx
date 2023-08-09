@@ -9,7 +9,7 @@ import {
     noteEdited,
     noteRemoved,
 } from "../../redux/features/notes/notesSlice";
-import EditNoteModalContent from "../EditNoteModalContent";
+import EditNoteModalContent from "../EditNoteModalContent/EditNoteModalContent";
 import { FormValues } from "../../components/NoteEditForm/NoteEditForm";
 
 export default function BodyActionCell({ item }: { item: Note }) {
