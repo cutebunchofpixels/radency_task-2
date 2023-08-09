@@ -12,7 +12,13 @@ export interface FormValues {
 }
 
 interface NoteEditFormProps {
+    /**
+     * For note editing forms
+     */
     oldNote?: Note;
+    /**
+     * Fired whenever the form is submitted
+     */
     handleSubmit: (values: FormValues) => void;
 }
 
